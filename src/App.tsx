@@ -83,7 +83,7 @@ function App() {
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: isLoading ? 0 : 1 }}
-        transition={{ duration: 0.8, ease: "easeOut" }}
+        transition={{ duration: 0.35, ease: "easeOut" }}
         className="min-h-screen transition-colors duration-300 bg-surface-light dark:bg-surface-dark text-text-light dark:text-text-dark"
       >
         {/* Navigation Bar */}
