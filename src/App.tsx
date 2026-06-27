@@ -67,7 +67,8 @@ function App() {
     } else {
       document.body.style.overflow = 'unset';
     }
-    const timer = setTimeout(() => setIsLoading(false), 1400);
+    const isMobile = window.innerWidth < 768;
+    const timer = setTimeout(() => setIsLoading(false), isMobile ? 650 : 1200);
     return () => {
       document.body.style.overflow = 'unset';
       clearTimeout(timer);
