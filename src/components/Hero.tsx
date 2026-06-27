@@ -93,55 +93,47 @@ export default function Hero() {
         </motion.p>
 
         <motion.div variants={itemVariants} className="flex flex-wrap items-center justify-center gap-4 mb-12">
-          <motion.a
+          <a
             href={personalInfo.resumeUrl}
             download
-            className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-primary-500 to-primary-600 text-white rounded-xl font-semibold shadow-lg shadow-primary-500/25 hover:shadow-primary-500/40 transition-shadow"
-            whileHover={{ scale: 1.05, y: -2 }}
-            whileTap={{ scale: 0.95 }}
+            className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-primary-500 to-primary-600 text-white rounded-xl font-semibold shadow-lg shadow-primary-500/25 hover:shadow-primary-500/40 transition-all duration-200 hover:-translate-y-0.5 active:scale-95"
           >
             <Download size={18} /> Download Resume
-          </motion.a>
-          <motion.a
+          </a>
+          <a
             href="#projects"
             onClick={(e) => { e.preventDefault(); document.querySelector('#projects')?.scrollIntoView({ behavior: 'smooth' }); }}
-            className={`inline-flex items-center gap-2 px-6 py-3 rounded-xl font-semibold transition-colors ${
+            className={`inline-flex items-center gap-2 px-6 py-3 rounded-xl font-semibold transition-all duration-200 hover:-translate-y-0.5 active:scale-95 ${
               isDark ? 'bg-white/10 hover:bg-white/15 text-white border border-white/10' : 'bg-white hover:bg-gray-50 text-gray-800 border border-gray-200'
             }`}
-            whileHover={{ scale: 1.05, y: -2 }}
-            whileTap={{ scale: 0.95 }}
           >
             <FolderOpen size={18} /> View Projects
-          </motion.a>
-          <motion.a
+          </a>
+          <a
             href="#contact"
             onClick={(e) => { e.preventDefault(); document.querySelector('#contact')?.scrollIntoView({ behavior: 'smooth' }); }}
-            className={`inline-flex items-center gap-2 px-6 py-3 rounded-xl font-semibold transition-colors ${
+            className={`inline-flex items-center gap-2 px-6 py-3 rounded-xl font-semibold transition-all duration-200 hover:-translate-y-0.5 active:scale-95 ${
               isDark ? 'text-primary-300 hover:bg-primary-500/10 border border-primary-500/20' : 'text-primary-600 hover:bg-primary-50/50 border border-primary-200'
             }`}
-            whileHover={{ scale: 1.05, y: -2 }}
-            whileTap={{ scale: 0.95 }}
           >
             <MessageSquare size={18} /> Contact Me
-          </motion.a>
+          </a>
         </motion.div>
 
         <motion.div variants={itemVariants} className="flex items-center justify-center gap-4">
           {socialLinks.map((link) => (
-            <motion.a
+            <a
               key={link.name}
               href={link.url}
               target="_blank"
               rel="noopener noreferrer"
-              className={`p-3 rounded-xl transition-colors ${
+              className={`p-3 rounded-xl transition-all duration-200 hover:-translate-y-1 active:scale-95 ${
                 isDark ? 'bg-white/5 hover:bg-white/10 text-gray-400 hover:text-white border border-white/5' : 'bg-white hover:bg-gray-50 text-gray-500 hover:text-gray-800 border border-gray-200'
               }`}
-              whileHover={{ scale: 1.15, y: -3 }}
-              whileTap={{ scale: 0.95 }}
               aria-label={link.name}
             >
               <link.icon size={22} />
-            </motion.a>
+            </a>
           ))}
         </motion.div>
       </motion.div>

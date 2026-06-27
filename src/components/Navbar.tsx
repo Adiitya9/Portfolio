@@ -36,16 +36,14 @@ export default function Navbar() {
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16 md:h-20">
-          <motion.a
+          <a
             href="#home"
             onClick={(e) => { e.preventDefault(); handleNavClick('#home'); }}
-            className="text-xl md:text-2xl font-bold font-[family-name:var(--font-heading)]"
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
+            className="text-xl md:text-2xl font-bold font-[family-name:var(--font-heading)] transition-all duration-200 hover:scale-105 active:scale-95 block"
           >
             <span className="gradient-text">Aditya</span>
             <span className={isDark ? 'text-white' : 'text-gray-800'}> Anant</span>
-          </motion.a>
+          </a>
 
           <div className="hidden md:flex items-center gap-1">
             {navLinks.map((link) => {
@@ -76,14 +74,13 @@ export default function Navbar() {
           </div>
 
           <div className="flex md:hidden items-center gap-2">
-            <motion.button
+            <button
               onClick={() => setIsOpen(!isOpen)}
-              className={`p-2 rounded-lg ${isDark ? 'text-white' : 'text-gray-800'}`}
-              whileTap={{ scale: 0.9 }}
+              className={`p-2 rounded-lg transition-transform active:scale-95 ${isDark ? 'text-white' : 'text-gray-800'}`}
               aria-label="Toggle menu"
             >
               {isOpen ? <X size={24} /> : <Menu size={24} />}
-            </motion.button>
+            </button>
           </div>
         </div>
       </div>

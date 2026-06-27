@@ -1,4 +1,3 @@
-import { motion } from 'framer-motion';
 import { Github, ExternalLink, Star, ChevronRight } from 'lucide-react';
 import { useTheme } from '../context/ThemeContext';
 import { projects } from '../data/data';
@@ -57,10 +56,8 @@ export default function Projects() {
 
 function FeaturedProjectCard({ project, isDark }: { project: Project; isDark: boolean }) {
   return (
-    <motion.div
-      className={`glass-card rounded-3xl overflow-hidden ${isDark ? 'border-primary-500/20' : 'border-primary-200'}`}
-      whileHover={{ y: -3 }}
-      transition={{ type: 'spring', stiffness: 300, damping: 20 }}
+    <div
+      className={`glass-card rounded-3xl overflow-hidden transition-all duration-300 hover:-translate-y-1 ${isDark ? 'border-primary-500/20' : 'border-primary-200'}`}
     >
       <div className="bg-gradient-to-r from-primary-500 to-violet-500 px-6 py-3">
         <div className="flex items-center gap-2 text-white">
@@ -108,26 +105,24 @@ function FeaturedProjectCard({ project, isDark }: { project: Project; isDark: bo
         )}
 
         <div className="flex items-center gap-3">
-          <motion.a href={project.github} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 px-5 py-2.5 bg-gradient-to-r from-primary-500 to-primary-600 text-white rounded-xl text-sm font-semibold shadow-lg shadow-primary-500/20" whileHover={{ scale: 1.05, y: -2 }} whileTap={{ scale: 0.95 }}>
+          <a href={project.github} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 px-5 py-2.5 bg-gradient-to-r from-primary-500 to-primary-600 text-white rounded-xl text-sm font-semibold shadow-lg shadow-primary-500/20 transition-all duration-200 hover:-translate-y-0.5 active:scale-95">
             <Github size={16} /> View Code
-          </motion.a>
+          </a>
           {project.demo && (
-             <motion.a href={project.demo} target="_blank" rel="noopener noreferrer" className={`inline-flex items-center gap-2 px-5 py-2.5 rounded-xl text-sm font-semibold ${isDark ? 'bg-white/10 hover:bg-white/15 text-white border border-white/10' : 'bg-white hover:bg-gray-50 text-gray-700 border border-gray-200 shadow-xs'}`} whileHover={{ scale: 1.05, y: -2 }} whileTap={{ scale: 0.95 }}>
+             <a href={project.demo} target="_blank" rel="noopener noreferrer" className={`inline-flex items-center gap-2 px-5 py-2.5 rounded-xl text-sm font-semibold transition-all duration-200 hover:-translate-y-0.5 active:scale-95 ${isDark ? 'bg-white/10 hover:bg-white/15 text-white border border-white/10' : 'bg-white hover:bg-gray-50 text-gray-700 border border-gray-200 shadow-xs'}`}>
               <ExternalLink size={16} /> Live Demo
-            </motion.a>
+            </a>
           )}
         </div>
       </div>
-    </motion.div>
+    </div>
   );
 }
 
 function ProjectCard({ project, isDark }: { project: Project; isDark: boolean }) {
   return (
-    <motion.div
-      className="glass-card rounded-2xl p-6 md:p-8 h-full flex flex-col justify-between"
-      whileHover={{ y: -3 }}
-      transition={{ type: 'spring', stiffness: 300, damping: 20 }}
+    <div
+      className="glass-card rounded-2xl p-6 md:p-8 h-full flex flex-col justify-between transition-all duration-300 hover:-translate-y-1"
     >
       <div>
         <h3 className="text-xl md:text-2xl font-bold font-[family-name:var(--font-heading)] mb-3">{project.title}</h3>
@@ -139,10 +134,10 @@ function ProjectCard({ project, isDark }: { project: Project; isDark: boolean })
             <span key={tech} className={`px-2.5 py-1 rounded-lg text-xs font-semibold ${isDark ? 'bg-white/5 text-gray-300 border border-white/5' : 'bg-white text-gray-600 border border-gray-200 shadow-xs'}`}>{tech}</span>
           ))}
         </div>
-        <motion.a href={project.github} target="_blank" rel="noopener noreferrer" className={`inline-flex items-center gap-2 px-4 py-2 rounded-xl text-sm font-semibold transition-colors ${isDark ? 'bg-white/10 hover:bg-white/15 text-white border border-white/10' : 'bg-white hover:bg-gray-50 text-gray-700 border border-gray-200 shadow-xs'}`} whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+        <a href={project.github} target="_blank" rel="noopener noreferrer" className={`inline-flex items-center gap-2 px-4 py-2 rounded-xl text-sm font-semibold transition-all duration-200 hover:-translate-y-0.5 active:scale-95 ${isDark ? 'bg-white/10 hover:bg-white/15 text-white border border-white/10' : 'bg-white hover:bg-gray-50 text-gray-700 border border-gray-200 shadow-xs'}`}>
           <Github size={16} /> View Code
-        </motion.a>
+        </a>
       </div>
-    </motion.div>
+    </div>
   );
 }
