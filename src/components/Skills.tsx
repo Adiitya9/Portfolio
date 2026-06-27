@@ -1,4 +1,3 @@
-import { motion } from 'framer-motion';
 import { useTheme } from '../context/ThemeContext';
 import { skillCategories } from '../data/data';
 import AnimatedSection from './AnimatedSection';
@@ -22,44 +21,27 @@ export default function Skills() {
 
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5">
           {skillCategories.map((category, catIndex) => (
-            <AnimatedSection key={category.title} delay={catIndex * 0.08}>
-              <motion.div
-                className="glass-card rounded-2xl p-6 h-full group"
-                whileHover="hover"
-                initial="initial"
-                variants={{
-                  hover: { y: -5 },
-                  initial: { y: 0 }
-                }}
-                transition={{ type: 'spring', stiffness: 300, damping: 20 }}
-              >
+            <AnimatedSection key={category.title} delay={catIndex}>
+              <div className="glass-card rounded-2xl p-6 h-full group transition-transform duration-200 hover:-translate-y-1">
                 <div className="flex items-center gap-3 mb-5">
-                  <motion.div
-                    variants={{
-                      hover: { rotate: 12, scale: 1.1 },
-                      initial: { rotate: 0, scale: 1 }
-                    }}
-                    transition={{ type: 'spring', stiffness: 300, damping: 15 }}
-                    className={`w-10 h-10 rounded-xl bg-gradient-to-br ${category.gradient} flex items-center justify-center shadow-md`}
-                  >
+                  <div className={`w-10 h-10 rounded-xl bg-gradient-to-br ${category.gradient} flex items-center justify-center shadow-md transition-transform duration-200 group-hover:rotate-6 group-hover:scale-110`}>
                     <category.icon size={20} className="text-white" />
-                  </motion.div>
+                  </div>
                   <h3 className="font-semibold text-base">{category.title}</h3>
                 </div>
                 <div className="flex flex-wrap gap-2">
                   {category.skills.map((skill) => (
-                    <motion.span
+                    <span
                       key={skill.name}
-                      className={`px-3 py-1.5 rounded-lg text-xs font-medium transition-colors ${
+                      className={`px-3 py-1.5 rounded-lg text-xs font-medium transition-colors duration-150 ${
                         isDark ? 'bg-white/5 text-gray-300 hover:bg-white/10 border border-white/5' : 'bg-white text-gray-700 hover:bg-gray-50 border border-gray-200'
                       }`}
-                      whileHover={{ scale: 1.05 }}
                     >
                       {skill.name}
-                    </motion.span>
+                    </span>
                   ))}
                 </div>
-              </motion.div>
+              </div>
             </AnimatedSection>
           ))}
         </div>

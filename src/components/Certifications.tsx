@@ -1,4 +1,3 @@
-import { motion } from 'framer-motion';
 import { Award } from 'lucide-react';
 import { useTheme } from '../context/ThemeContext';
 import { certifications } from '../data/data';
@@ -23,12 +22,8 @@ export default function Certifications() {
 
         <div className="grid sm:grid-cols-2 gap-6">
           {certifications.map((cert, index) => (
-            <AnimatedSection key={cert.title} delay={index * 0.1}>
-              <motion.div
-                className="glass-card rounded-2xl p-6 h-full group"
-                whileHover={{ y: -5, scale: 1.02 }}
-                transition={{ type: 'spring', stiffness: 300, damping: 20 }}
-              >
+            <AnimatedSection key={cert.title} delay={index}>
+              <div className="glass-card rounded-2xl p-6 h-full group transition-transform duration-200 hover:-translate-y-1">
                 <div className="flex items-start gap-4">
                   <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-amber-400 to-orange-500 flex items-center justify-center shadow-lg shadow-amber-500/20 shrink-0">
                     <Award size={28} className="text-white" />
@@ -48,7 +43,7 @@ export default function Certifications() {
                 <div className={`mt-5 pt-4 border-t border-dashed ${isDark ? 'border-white/10' : 'border-gray-200'}`}>
                   <div className="h-1 w-full rounded-full bg-gradient-to-r from-amber-400 via-orange-500 to-red-400 opacity-60 group-hover:opacity-100 transition-opacity" />
                 </div>
-              </motion.div>
+              </div>
             </AnimatedSection>
           ))}
         </div>

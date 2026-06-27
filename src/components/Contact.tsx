@@ -1,5 +1,4 @@
 import { useState, type FormEvent } from 'react';
-import { motion } from 'framer-motion';
 import { Send, CheckCircle } from 'lucide-react';
 import { useTheme } from '../context/ThemeContext';
 import { contactInfo } from '../data/data';
@@ -67,7 +66,7 @@ export default function Contact() {
               <div className="glass-card rounded-2xl p-6 md:p-8 flex-1 flex flex-col justify-center">
                 <div className="space-y-6">
                   {contactInfo.map((info) => (
-                    <motion.div key={info.label} className="flex items-center gap-4 group" whileHover={{ x: 5 }}>
+                    <div key={info.label} className="flex items-center gap-4 group transition-transform duration-150 hover:translate-x-1">
                       <div className="w-11 h-11 rounded-xl bg-gradient-to-br from-primary-500 to-violet-500 flex items-center justify-center shrink-0">
                         <info.icon size={20} className="text-white" />
                       </div>
@@ -79,14 +78,14 @@ export default function Contact() {
                           <p className={`text-sm font-medium ${isDark ? 'text-gray-200' : 'text-gray-700'}`}>{info.value}</p>
                         )}
                       </div>
-                    </motion.div>
+                    </div>
                   ))}
                 </div>
               </div>
             </div>
           </AnimatedSection>
 
-          <AnimatedSection className="h-full" delay={0.2}>
+          <AnimatedSection className="h-full" delay={1}>
             <div className="space-y-4 h-full flex flex-col">
               <h3 className="text-xl font-bold mb-6 font-[family-name:var(--font-heading)]">Send a message</h3>
               <form onSubmit={handleSubmit} className="glass-card rounded-2xl p-6 md:p-8 flex-1 flex flex-col justify-between">
@@ -103,14 +102,12 @@ export default function Contact() {
                     <label htmlFor="message" className={`block text-sm font-medium mb-2 ${isDark ? 'text-gray-300' : 'text-gray-700'}`}>Message</label>
                     <textarea id="message" name="message" required rows={5} value={formData.message} onChange={(e) => setFormData(prev => ({ ...prev, message: e.target.value }))} placeholder="Your message..." className={`${inputClasses} resize-none`} />
                   </div>
-                  <motion.button
+                  <button
                     type="submit"
                     disabled={isSubmitting}
-                    className={`w-full py-3.5 px-6 rounded-xl font-semibold text-sm flex items-center justify-center gap-2 transition-all ${
+                    className={`w-full py-3.5 px-6 rounded-xl font-semibold text-sm flex items-center justify-center gap-2 transition-all duration-200 active:scale-[0.98] ${
                       isSubmitted ? 'bg-green-500 text-white' : 'bg-gradient-to-r from-primary-500 to-primary-600 text-white shadow-lg shadow-primary-500/25 hover:shadow-primary-500/40'
                     } disabled:opacity-70`}
-                    whileHover={!isSubmitting && !isSubmitted ? { scale: 1.02 } : {}}
-                    whileTap={!isSubmitting && !isSubmitted ? { scale: 0.98 } : {}}
                   >
                     {isSubmitting ? (
                       <div className="w-5 h-5 border-2 border-white/30 border-t-white rounded-full animate-spin" />
@@ -119,7 +116,7 @@ export default function Contact() {
                     ) : (
                       <><Send size={18} /> Send Message</>
                     )}
-                  </motion.button>
+                  </button>
                 </div>
               </form>
             </div>

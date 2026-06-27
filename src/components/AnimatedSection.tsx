@@ -1,5 +1,4 @@
-import { motion } from 'framer-motion';
-import { useEffect, useState, type ReactNode } from 'react';
+import { useEffect, useRef, useState, type ReactNode } from 'react';
 
 interface AnimatedSectionProps {
   children: ReactNode;
@@ -8,32 +7,37 @@ interface AnimatedSectionProps {
 }
 
 export default function AnimatedSection({ children, className = '', delay = 0 }: AnimatedSectionProps) {
-  const [isMobile, setIsMobile] = useState(false);
+  const ref = useRef<HTMLDivElement>(null);
+  const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
-    const checkMobile = () => setIsMobile(window.innerWidth < 768);
-    checkMobile();
-    window.addEventListener('resize', checkMobile);
-    return () => window.removeEventListener('resize', checkMobile);
+    const el = ref.current;
+    if (!el) return;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsVisible(true);
+          observer.unobserve(el);
+        }
+      },
+      { threshold: 0.1, rootMargin: '0px 0px -40px 0px' }
+    );
+    observer.observe(el);
+    return () => observer.disconnect();
   }, []);
 
-  if (isMobile) {
-    return (
-      <div className={className}>
-        {children}
-      </div>
-    );
-  }
-
   return (
-    <motion.div
-      initial={{ opacity: 0, y: 15 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: '-30px' }}
-      transition={{ duration: 0.4, delay: delay * 0.5, ease: "easeOut" }}
+    <div
+      ref={ref}
       className={className}
+      style={{
+        opacity: isVisible ? 1 : 0,
+        transform: isVisible ? 'translateY(0)' : 'translateY(12px)',
+        transition: `opacity 0.4s ease ${delay * 0.15}s, transform 0.4s ease ${delay * 0.15}s`,
+      }}
     >
       {children}
-    </motion.div>
+    </div>
   );
 }

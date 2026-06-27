@@ -1,4 +1,3 @@
-import { motion } from 'framer-motion';
 import { GraduationCap, Cpu, Code2, Sparkles } from 'lucide-react';
 import { useTheme } from '../context/ThemeContext';
 import { personalInfo } from '../data/data';
@@ -42,21 +41,19 @@ export default function About() {
             </div>
           </AnimatedSection>
 
-          <AnimatedSection delay={0.2}>
+          <AnimatedSection delay={1}>
             <div className="grid grid-cols-2 gap-4">
               {highlights.map((item) => (
-                <motion.div
+                <div
                   key={item.label}
-                  className="glass-card rounded-2xl p-6 text-center group cursor-default"
-                  whileHover={{ y: -5, scale: 1.02 }}
-                  transition={{ type: 'spring', stiffness: 300, damping: 20 }}
+                  className="glass-card rounded-2xl p-6 text-center group cursor-default transition-transform duration-200 hover:-translate-y-1"
                 >
                   <div className={`w-12 h-12 mx-auto mb-4 rounded-xl bg-gradient-to-br ${item.color} flex items-center justify-center shadow-lg`}>
                     <item.icon size={24} className="text-white" />
                   </div>
                   <h3 className="font-semibold text-sm mb-1">{item.label}</h3>
                   <p className={`text-xs ${isDark ? 'text-gray-400' : 'text-gray-700'}`}>{item.sublabel}</p>
-                </motion.div>
+                </div>
               ))}
             </div>
           </AnimatedSection>

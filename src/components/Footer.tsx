@@ -1,4 +1,3 @@
-import { motion } from 'framer-motion';
 import { ArrowUp } from 'lucide-react';
 import { useTheme } from '../context/ThemeContext';
 import { socialLinks } from '../data/data';
@@ -19,18 +18,17 @@ export default function Footer() {
             <p className={`text-sm ${isDark ? 'text-gray-400' : 'text-gray-600'}`}>
               {'\u00a9'} 2026 <span className="font-semibold gradient-text">Aditya Anant</span>. All Rights Reserved.
             </p>
-
           </div>
           <div className="flex items-center gap-3">
             {socialLinks.map((link) => (
-              <motion.a key={link.name} href={link.url} target="_blank" rel="noopener noreferrer" className={`p-2.5 rounded-xl transition-colors ${isDark ? 'bg-white/5 hover:bg-white/10 text-gray-400 hover:text-white' : 'bg-gray-100 hover:bg-gray-200 text-gray-500 hover:text-gray-800'}`} whileHover={{ scale: 1.15, y: -2 }} whileTap={{ scale: 0.95 }} aria-label={link.name}>
+              <a key={link.name} href={link.url} target="_blank" rel="noopener noreferrer" className={`p-2.5 rounded-xl transition-all duration-200 hover:-translate-y-0.5 active:scale-95 ${isDark ? 'bg-white/5 hover:bg-white/10 text-gray-400 hover:text-white' : 'bg-gray-100 hover:bg-gray-200 text-gray-500 hover:text-gray-800'}`} aria-label={link.name}>
                 <link.icon size={18} />
-              </motion.a>
+              </a>
             ))}
           </div>
-          <motion.button onClick={scrollToTop} className={`p-3 rounded-xl transition-colors ${isDark ? 'bg-white/5 hover:bg-white/10 text-gray-400 hover:text-white border border-white/5' : 'bg-gray-100 hover:bg-gray-200 text-gray-500 hover:text-gray-800 border border-gray-100'}`} whileHover={{ scale: 1.1, y: -3 }} whileTap={{ scale: 0.95 }} aria-label="Scroll to top">
+          <button onClick={scrollToTop} className={`p-3 rounded-xl transition-all duration-200 hover:-translate-y-0.5 active:scale-95 ${isDark ? 'bg-white/5 hover:bg-white/10 text-gray-400 hover:text-white border border-white/5' : 'bg-gray-100 hover:bg-gray-200 text-gray-500 hover:text-gray-800 border border-gray-100'}`} aria-label="Scroll to top">
             <ArrowUp size={20} />
-          </motion.button>
+          </button>
         </div>
       </div>
     </footer>
