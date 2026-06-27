@@ -1,35 +1,27 @@
 import { useState, useEffect } from 'react';
 
-export function useScrollSpy(sectionIds: string[], offset: number = 100) {
-  const [activeId, setActiveId] = useState<string>('');
+export function useScrollSpy(sectionIds: string[]) {
+  const [activeId, setActiveId] = useState<string>(sectionIds[0] || '');
 
   useEffect(() => {
-    let ticking = false;
-
-    const handleScroll = () => {
-      if (!ticking) {
-        window.requestAnimationFrame(() => {
-          const scrollY = window.scrollY + offset;
-
-          for (let i = sectionIds.length - 1; i >= 0; i--) {
-            const section = document.getElementById(sectionIds[i]);
-            if (section && section.offsetTop <= scrollY) {
-              setActiveId(sectionIds[i]);
-              ticking = false;
-              return;
-            }
+    const observer = new IntersectionObserver(
+      (entries) => {
+        for (const entry of entries) {
+          if (entry.isIntersecting) {
+            setActiveId(entry.target.id);
           }
-          setActiveId(sectionIds[0]);
-          ticking = false;
-        });
-        ticking = true;
-      }
-    };
+        }
+      },
+      { rootMargin: '-20% 0px -75% 0px' }
+    );
 
-    handleScroll();
-    window.addEventListener('scroll', handleScroll, { passive: true });
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, [sectionIds, offset]);
+    for (const id of sectionIds) {
+      const el = document.getElementById(id);
+      if (el) observer.observe(el);
+    }
+
+    return () => observer.disconnect();
+  }, [sectionIds]);
 
   return activeId;
 }
