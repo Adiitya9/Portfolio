@@ -7,46 +7,17 @@ function FloatingOrbs() {
   const { isDark } = useTheme();
   return (
     <div className="absolute inset-0 overflow-hidden pointer-events-none">
-      <motion.div
-        animate={{
-          x: [0, 40, -20, 0],
-          y: [0, -60, 40, 0],
-        }}
-        transition={{
-          duration: 25,
-          repeat: Infinity,
-          ease: "easeInOut"
-        }}
+      <div
         className={`absolute -top-20 -right-20 w-[450px] h-[450px] rounded-full blur-[100px] ${
           isDark ? 'bg-primary-500/[0.12]' : 'bg-primary-500/[0.03]'
         }`}
       />
-      <motion.div
-        animate={{
-          x: [0, -30, 40, 0],
-          y: [0, 50, -30, 0],
-        }}
-        transition={{
-          duration: 30,
-          repeat: Infinity,
-          ease: "easeInOut",
-          delay: 2
-        }}
+      <div
         className={`absolute -bottom-40 -left-20 w-[500px] h-[500px] rounded-full blur-[120px] ${
           isDark ? 'bg-cyan-500/[0.10]' : 'bg-cyan-500/[0.03]'
         }`}
       />
-      <motion.div
-        animate={{
-          x: [0, 50, -40, 0],
-          y: [0, -30, 60, 0],
-        }}
-        transition={{
-          duration: 28,
-          repeat: Infinity,
-          ease: "easeInOut",
-          delay: 4
-        }}
+      <div
         className={`absolute top-1/3 left-1/3 w-[600px] h-[600px] rounded-full blur-[140px] ${
           isDark ? 'bg-violet-500/[0.08]' : 'bg-violet-500/[0.02]'
         }`}
@@ -104,30 +75,7 @@ export default function Hero() {
           variants={itemVariants}
           className="text-4xl sm:text-5xl md:text-7xl font-bold font-[family-name:var(--font-heading)] mb-4 tracking-tight"
         >
-          {"Hi, I'm ".split(" ").filter(Boolean).map((word, i) => (
-            <motion.span
-              key={i}
-              initial={{ opacity: 0, y: 15 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.4 + i * 0.1, duration: 0.5, ease: "easeOut" }}
-              className="inline-block mr-2"
-            >
-              {word}
-            </motion.span>
-          ))}
-          <span className="gradient-text inline-block">
-            {personalInfo.name.split(" ").map((word, i) => (
-              <motion.span
-                key={i}
-                initial={{ opacity: 0, scale: 0.92, y: 10 }}
-                animate={{ opacity: 1, scale: 1, y: 0 }}
-                transition={{ delay: 0.6 + i * 0.12, duration: 0.6, ease: [0.34, 1.56, 0.64, 1] }}
-                className="inline-block mr-2"
-              >
-                {word}
-              </motion.span>
-            ))}
-          </span>
+          Hi, I'm <span className="gradient-text">{personalInfo.name}</span>
         </motion.h1>
 
         <motion.p
