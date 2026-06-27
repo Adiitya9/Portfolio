@@ -11,7 +11,7 @@ export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const [navVisible, setNavVisible] = useState(false);
-  const activeId = useScrollSpy(sectionIds);
+  const activeId = useScrollSpy(sectionIds, 150);
 
   useEffect(() => {
     const handleScroll = () => setIsScrolled(window.scrollY > 20);
@@ -61,7 +61,7 @@ export default function Navbar() {
                   onClick={(e) => { e.preventDefault(); handleNavClick(link.href); }}
                   className={`relative px-3 py-2 text-sm font-medium rounded-lg transition-all duration-200 ${
                     isActive
-                      ? `${isDark ? 'text-white bg-primary-500/10' : 'text-primary-600 bg-primary-50'}`
+                      ? `${isDark ? 'text-white bg-primary-500/20' : 'text-primary-600 bg-primary-50'}`
                       : isDark ? 'text-gray-400 hover:text-white' : 'text-gray-800 hover:text-black'
                   }`}
                 >
