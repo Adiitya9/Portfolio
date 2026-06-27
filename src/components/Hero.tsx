@@ -7,9 +7,9 @@ function FloatingOrbs() {
   const { isDark } = useTheme();
   return (
     <div className="absolute inset-0 overflow-hidden pointer-events-none">
-      <div className={`absolute -top-20 -right-20 w-[450px] h-[450px] rounded-full blur-[100px] ${isDark ? 'bg-primary-500/[0.12]' : 'bg-primary-500/[0.03]'}`} />
-      <div className={`absolute -bottom-40 -left-20 w-[500px] h-[500px] rounded-full blur-[120px] ${isDark ? 'bg-cyan-500/[0.10]' : 'bg-cyan-500/[0.03]'}`} />
-      <div className={`absolute top-1/3 left-1/3 w-[600px] h-[600px] rounded-full blur-[140px] ${isDark ? 'bg-violet-500/[0.08]' : 'bg-violet-500/[0.02]'}`} />
+      <div className={`absolute -top-20 -right-20 w-[450px] h-[450px] rounded-full ${isDark ? 'bg-primary-500/[0.12]' : 'bg-primary-500/[0.03]'}`} />
+      <div className={`absolute -bottom-40 -left-20 w-[500px] h-[500px] rounded-full ${isDark ? 'bg-cyan-500/[0.10]' : 'bg-cyan-500/[0.03]'}`} />
+      <div className={`absolute top-1/3 left-1/3 w-[600px] h-[600px] rounded-full ${isDark ? 'bg-violet-500/[0.08]' : 'bg-violet-500/[0.02]'}`} />
       <div
         className={`absolute inset-0 ${isDark ? 'opacity-[0.03]' : 'opacity-[0.012]'}`}
         style={{
