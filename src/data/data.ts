@@ -169,7 +169,7 @@ export const projects: Project[] = [
 export const education: Education[] = [
   {
     degree: 'Bachelor of Technology (B.Tech) – Computer Science Engineering (AI & ML)',
-    institution: 'Noida International University, Greater Noida',
+    institution: 'Noida International University, Noida',
     year: '2022 – 2026',
     description: 'Specializing in Artificial Intelligence and Machine Learning',
   },
@@ -205,7 +205,7 @@ export const contactInfo: ContactInfo[] = [
   { label: 'Phone', value: '+91 6394068419', href: 'tel:+916394068419', icon: Phone },
   { label: 'LinkedIn', value: 'linkedin.com/in/aditya-anant-9a0302270', href: 'https://www.linkedin.com/in/aditya-anant-9a0302270/', icon: Linkedin },
   { label: 'GitHub', value: 'github.com/Adiitya9', href: 'https://github.com/Adiitya9', icon: Github },
-  { label: 'Location', value: 'Greater Noida, Uttar Pradesh, India', icon: MapPin },
+  { label: 'Location', value: 'Noida, Uttar Pradesh, India', icon: MapPin },
 ];
 
 export const navLinks = [
