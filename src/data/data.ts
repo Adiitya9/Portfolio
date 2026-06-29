@@ -169,7 +169,7 @@ export const projects: Project[] = [
 export const education: Education[] = [
   {
     degree: 'Bachelor of Technology (B.Tech) – Computer Science Engineering (AI & ML)',
-    institution: 'Noida International University, Noida',
+    institution: 'Noida International University, Greater Noida',
     year: '2022 – 2026',
     description: 'Specializing in Artificial Intelligence and Machine Learning',
   },
