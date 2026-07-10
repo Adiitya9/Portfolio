@@ -173,6 +173,18 @@ export const education: Education[] = [
     year: '2022 – 2026',
     description: 'Specializing in Artificial Intelligence and Machine Learning',
   },
+  {
+    degree: 'Senior Secondary (Class XII)',
+    institution: 'IRS, Gorakhpur',
+    year: '2021',
+    description: 'Division: First Division',
+  },
+  {
+    degree: 'Secondary (Class X)',
+    institution: 'RPM Academy, Gorakhpur',
+    year: '2019',
+    description: 'Division: First Division',
+  },
 ];
 
 export const certifications: Certification[] = [
