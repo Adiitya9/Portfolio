@@ -24,6 +24,13 @@ export function useScrollSpy(sectionIds: string[], offset: number = 100) {
     const handleScroll = () => {
       if (!ticking) {
         window.requestAnimationFrame(() => {
+          // If near the bottom of the page, activate the last section
+          if (window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 60) {
+            setActiveId(sectionIds[sectionIds.length - 1]);
+            ticking = false;
+            return;
+          }
+
           const scrollY = window.scrollY + offset;
 
           let currentActiveId = sectionIds[0];

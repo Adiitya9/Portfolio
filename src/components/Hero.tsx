@@ -1,9 +1,9 @@
-import { useEffect, useState } from 'react';
+import { memo, useEffect, useState } from 'react';
 import { ArrowDown, Download, FolderOpen, MessageSquare } from 'lucide-react';
 import { useTheme } from '../context/ThemeContext';
 import { personalInfo, socialLinks } from '../data/data';
 
-function FloatingOrbs() {
+const FloatingOrbs = memo(function FloatingOrbs() {
   const { isDark } = useTheme();
   return (
     <div className="absolute inset-0 overflow-hidden pointer-events-none">
@@ -19,7 +19,7 @@ function FloatingOrbs() {
       />
     </div>
   );
-}
+});
 
 export default function Hero() {
   const { isDark } = useTheme();
