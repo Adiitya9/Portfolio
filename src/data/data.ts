@@ -29,6 +29,13 @@ export interface Project {
 
 
 
+export interface Experience {
+  role: string;
+  company: string;
+  period: string;
+  highlights: string[];
+}
+
 export interface Education {
   degree: string;
   institution: string;
@@ -40,6 +47,7 @@ export interface Certification {
   title: string;
   issuer: string;
   date?: string;
+  credentialUrl?: string;
 }
 
 export interface SocialLink {
@@ -57,8 +65,8 @@ export interface ContactInfo {
 
 export const personalInfo = {
   name: 'Aditya Anant',
-  tagline: 'Software Engineer | Java Full Stack Developer | AI & ML Enthusiast',
-  intro: 'Final-year Computer Science Engineering student specializing in AI & ML. Trained in Java Full Stack Development and Software Testing. Passionate about building scalable software and automated testing solutions.',
+  tagline: 'Software Engineer | Java Full Stack Developer | QA Automation',
+  intro: 'B.Tech Computer Science Engineering (AI ML) student with training in Java Full Stack Development and Software Testing. Skilled in Java, Spring Boot, SQL, React.js, Selenium WebDriver, TestNG, REST APIs, and MySQL. Seeking entry-level Software Development or QA Automation opportunities.',
   about: 'I am a final-year B.Tech Computer Science Engineering student specializing in Artificial Intelligence and Machine Learning at Noida International University. I have completed comprehensive training in Java Full Stack Development and Software Testing at QSpiders. I enjoy building backend architectures, automation frameworks, and applying machine learning to real-world tasks.',
   resumeUrl: '/resume.pdf',
 };
@@ -120,7 +128,20 @@ export const skillCategories: SkillCategory[] = [
   },
 ];
 
-
+export const experiences: Experience[] = [
+  {
+    role: 'Java Full Stack Development & Software Testing Trainee',
+    company: 'QSpiders',
+    period: 'Mar 2026 – Present',
+    highlights: [
+      'Developed Java-based applications using Core Java, Spring Boot, Hibernate/JPA, JDBC, REST APIs, and MySQL.',
+      'Automated web application test scenarios using Selenium WebDriver and TestNG.',
+      'Performed manual testing including functional, smoke, and regression testing.',
+      'Practiced test case design, defect life cycle, SDLC, STLC, and Agile methodologies.',
+      'Used Git, GitHub, and Maven during project-based development and testing activities.',
+    ],
+  },
+];
 
 export const projects: Project[] = [
   {
@@ -141,11 +162,20 @@ export const projects: Project[] = [
     featured: true,
   },
   {
-    title: 'Student Management System',
-    techStack: ['Java', 'Spring Boot', 'Hibernate', 'MySQL', 'REST APIs'],
-    description: 'Developed a web-based Student Management System for managing student records. Implemented CRUD operations using Spring Boot and Hibernate, integrated MySQL database for efficient storage and retrieval, and developed RESTful APIs for communication between application layers.',
+    title: 'Studeon — Student Management & Academic Records Portal',
+    techStack: ['Java', 'Spring Boot', 'Spring Security', 'JWT', 'Hibernate/JPA', 'MySQL', 'REST APIs', 'Docker'],
+    description: 'Developed a production-grade academic records and student management system. Engineered role-based access control (RBAC) with stateless JWT authentication for Administrator, Faculty, and Student tiers, an authoritative student register with search and CSV export, gradebook matrix computing weighted letter grades, course catalog, transcript generation, and append-only audit logging.',
+    features: [
+      'Role-based access control (RBAC) with stateless JWT authentication for Admin, Faculty, and Student roles',
+      'Dynamic student register supporting multi-field search, column sorting, pagination, and CSV export',
+      'Gradebook & attendance matrix computing weighted composites into official letter grades (A–F)',
+      'Academic transcript & student ID generation tracking semester coursework and cumulative GPA',
+      'Course catalog bulletin managing course codes, credits, instructors, and enrollment capacities',
+      'Append-only audit logging tracking administrative and faculty modifications',
+      'Containerized with Docker & Docker Compose for cloud deployment on Render',
+    ],
     github: 'https://github.com/Adiitya9/StudentManagementSystem',
-    demo: 'https://github.com/Adiitya9/StudentManagementSystem',
+    demo: 'https://studeon.onrender.com',
     featured: true,
   },
   {
@@ -189,21 +219,19 @@ export const education: Education[] = [
 
 export const certifications: Certification[] = [
   {
-    title: 'AWS Academy Completion Certificate – Introduction to Machine Learning: Art of the Possible',
+    title: 'Introduction to Machine Learning: Art of the Possible',
     issuer: 'AWS Academy',
     date: '2026',
+    credentialUrl: 'https://drive.google.com/file/d/1_kJqrJiN8YFKck3o2hikTsgJMhd7ZP-B/view?usp=share_link',
   },
   {
     title: 'AI Fluency: Framework & Foundations',
     issuer: 'Anthropic',
     date: '2026',
+    credentialUrl: 'https://drive.google.com/file/d/1tJsJifmTc4I9gzIA347TGhI3eezbWbxQ/view?usp=share_link',
   },
   {
-    title: 'Java Full Stack Development Training',
-    issuer: 'QSpiders',
-  },
-  {
-    title: 'Software Testing Training',
+    title: 'Java Full Stack Development Training & Software Testing Training',
     issuer: 'QSpiders',
   },
   {
@@ -224,6 +252,7 @@ export const navLinks = [
   { label: 'Home', href: '#home' },
   { label: 'About', href: '#about' },
   { label: 'Skills', href: '#skills' },
+  { label: 'Experience', href: '#experience' },
   { label: 'Projects', href: '#projects' },
   { label: 'Education', href: '#education' },
   { label: 'Certifications & Achievements', href: '#certifications' },
